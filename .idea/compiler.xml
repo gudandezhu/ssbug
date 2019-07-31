@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ssbug-admin-api" />
+        <module name="ssbug-invitation-manager" />
+        <module name="ssbug-search" />
+        <module name="usercenter" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ssbug" target="1.8" />
+      <module name="ssbug-admin-api" target="1.8" />
+      <module name="ssbug-invitation-manager" target="1.8" />
+      <module name="ssbug-search" target="1.8" />
+      <module name="usercenter" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ssbug" options="-parameters" />
+      <module name="ssbug-admin-api" options="-parameters" />
+      <module name="ssbug-invitation-manager" options="-parameters" />
+      <module name="ssbug-search" options="-parameters" />
+      <module name="usercenter" options="-parameters" />
+    </option>
+  </component>
+</project>
