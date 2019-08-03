@@ -20,7 +20,7 @@
 
 ## 联系我们 ##
 
-著作人: 
+著作人:   
 	
-	李润康  github:lrk2500
-	蒲一帆  github:gudandezhu
+	李润康    github : lrk2500
+	蒲一帆    github : gudandezhu

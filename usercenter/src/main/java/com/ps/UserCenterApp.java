@@ -8,10 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication
-public class App 
+public class UserCenterApp
 {
     public static void main( String[] args )
     {
-        SpringApplication.run(App.class,args);
+        SpringApplication.run(UserCenterApp.class,args);
     }
 }

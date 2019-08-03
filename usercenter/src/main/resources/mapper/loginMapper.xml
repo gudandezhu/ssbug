@@ -5,7 +5,20 @@
 <mapper namespace="com.ps.user_center.mapper.LoginMapper">
 
     <select id="findByPhoneAndPassword" resultType="UserVO">
-        select id,name,account from user where name=#{name} and password=#{password}
+        select
+               id,name,account
+        from
+             user
+        <where>
+            <if test="phone!=null">
+                AND phone=#{phone}
+            </if>
+             <if test="account!=null">
+                 AND account=#{account}
+             </if>
+        </where>
+        and
+            password=#{password}
     </select>
 
 </mapper>
