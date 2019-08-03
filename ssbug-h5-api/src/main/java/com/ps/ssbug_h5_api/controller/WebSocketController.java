@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @ServerEndpoint("/websocket/{sid}")
 @Component
 @Slf4j
-public class WebSocketServer {
+public class WebSocketController {
 
     //concurrent包的线程安全map，用来存放每个客户端对应的MyWebSocket对象。
     private static ConcurrentHashMap<String,Session> map = new ConcurrentHashMap();
