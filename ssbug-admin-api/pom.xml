@@ -14,4 +14,11 @@
     <name>ssbug-admin-api</name>
     <description>admin api</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.ps.ssbug</groupId>
+            <artifactId>sdk</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

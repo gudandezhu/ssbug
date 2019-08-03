@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/ssbug-search/pom.xml" />
         <option value="$PROJECT_DIR$/ssbug-invitation-manager/pom.xml" />
         <option value="$PROJECT_DIR$/ssbug-admin-api/pom.xml" />
+        <option value="$PROJECT_DIR$/ssbug-h5-api/pom.xml" />
       </list>
     </option>
   </component>

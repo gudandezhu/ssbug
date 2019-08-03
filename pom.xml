@@ -8,6 +8,8 @@
         <module>ssbug-search</module>
         <module>ssbug-invitation-manager</module>
         <module>ssbug-admin-api</module>
+        <module>ssbug-h5-api</module>
+        <module>sdk</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -30,12 +32,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--mybatis-->
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.1.0</version>
-        </dependency>
+
         <!--kafkf-->
         <dependency>
             <groupId>org.springframework.kafka</groupId>
@@ -81,6 +78,17 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.9.2</version>
+        </dependency>
+        <!--短信发送-->
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+            <version>4.4.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+            <version>1.1.0</version>
         </dependency>
 
 
