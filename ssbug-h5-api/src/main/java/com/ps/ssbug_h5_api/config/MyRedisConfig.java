@@ -8,26 +8,28 @@ import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSeriali
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
-@Configuration
-public class MyRedisConfig {
-
-    @Bean(name = "redisTemplate")
-    public RedisTemplate<String,Object> redisTemplate(RedisConnectionFactory redisConnectionFactory){
-
-        RedisTemplate<String,Object> redisTemplate = new RedisTemplate<>();
-
-        redisTemplate.setConnectionFactory(redisConnectionFactory);
-        redisTemplate.setKeySerializer(keySerializer());
-        redisTemplate.setHashKeySerializer(keySerializer());
-        redisTemplate.setValueSerializer(valueSerializer());
-        redisTemplate.setHashValueSerializer(valueSerializer());
-        return redisTemplate;
-    }
-    private RedisSerializer<String> keySerializer() {
-        return new StringRedisSerializer();
-    }
-
-    private RedisSerializer<Object> valueSerializer() {
-        return new GenericJackson2JsonRedisSerializer();
-    }
-}
+//@Configuration
+//public class MyRedisConfig {
+//
+//    @Bean
+//    public RedisTemplate redisTemplate(RedisConnectionFactory redisConnectionFactory){
+//
+//        RedisTemplate redisTemplate = new RedisTemplate<>();
+//
+//        redisTemplate.setConnectionFactory(redisConnectionFactory);
+//        redisTemplate.setKeySerializer(keySerializer());
+//        redisTemplate.setHashKeySerializer(keySerializer());
+//        redisTemplate.setValueSerializer(valueSerializer());
+//        redisTemplate.setHashValueSerializer(valueSerializer());
+//        return redisTemplate;
+//    }
+//
+//
+//    private RedisSerializer keySerializer() {
+//        return new StringRedisSerializer();
+//    }
+//
+//    private RedisSerializer valueSerializer() {
+//        return new GenericJackson2JsonRedisSerializer();
+//    }
+//}

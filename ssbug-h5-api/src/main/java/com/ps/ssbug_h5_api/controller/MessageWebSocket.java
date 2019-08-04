@@ -1,44 +1,41 @@
 package com.ps.ssbug_h5_api.controller;
 
-import com.ps.ssbug_h5_api.vo.UserSessionVO;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.ListOperations;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 
+/**
+ * 这个类是多例的
+ *      每次有连接都会创建一个实例
+ *
+ * */
 @ServerEndpoint("/websocket/{userId}")
 @Component
 @Slf4j
-public class WebSocketController {
+public class MessageWebSocket {
 
+    private static Map map = new ConcurrentHashMap();
 
-    //redis存放session
-    @Resource
-    private RedisTemplate<String,Object> redisTemplate;
-
-    private ListOperations list = redisTemplate.opsForList();
-
+    private Long userId;
+    private Session session;
 
     /**
      * 连接建立成功调用的方法
      */
     @OnOpen
-    public void onOpen(Session session, @PathParam("userId") String userId) {
-        UserSessionVO uVO = new UserSessionVO();
-        uVO.setUserId(userId);
-        uVO.setSession(session);
+    public void onOpen(Session session, @PathParam("userId") Long userId) {
+        this.userId=userId;
+        this.session=session;
+        map.put(userId,session);
 
-
-        list.leftPush("session", uVO);
-
+        System.out.println(userId + ": " +map.get(userId));
         log.info("有新窗口开始监听:" + userId + ",当前在线人数为" + getOnlineCount());
 
 
@@ -47,22 +44,17 @@ public class WebSocketController {
         } catch (IOException e) {
             log.error("websocket IO异常");
         }
-
-        log.info("当前用户信息:" + list.range("session", 0, 100));
     }
 
     /**
      * 连接关闭调用的方法
      */
     @OnClose
-    public void onClose(Session session) throws IOException {
+    public void onClose(){
 
-        list.remove("session", 1, session);
+        map.remove(this.userId);
 
         log.info("有一连接关闭！当前在线人数为:" + getOnlineCount());
-        log.info("当前用户信息:" + list.range("session", 0, 100));
-
-        session.getBasicRemote().sendText("连接关闭");
     }
 
     /**
@@ -84,8 +76,12 @@ public class WebSocketController {
     }
 
 
-    public synchronized Long getOnlineCount() {
-        return list.size("session");
+    public synchronized int getOnlineCount() {
+        return map.size();
+    }
+
+    public static Map getMap() {
+        return map;
     }
 
 }
