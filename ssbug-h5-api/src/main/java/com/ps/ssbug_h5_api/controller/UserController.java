@@ -35,6 +35,7 @@ public class UserController {
     @Reference
     private HistoryService historyService;
 
+
     @ApiOperation("查询自己的历史足迹")
     @GetMapping("/findHistoryAll/{userId}")
     public MessageVO findHistoryAll(@PathVariable int userId){
@@ -43,6 +44,5 @@ public class UserController {
         mv.setData(list);
         return mv;
     }
-
 
 }
