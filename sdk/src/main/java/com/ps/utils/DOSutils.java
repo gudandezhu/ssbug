@@ -1,8 +1,7 @@
 package com.ps.utils;
 
-import org.apache.zookeeper.ZooKeeper;
-
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
 public class DOSutils {
 

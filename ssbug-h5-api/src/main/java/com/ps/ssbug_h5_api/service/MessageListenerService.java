@@ -1,9 +1,6 @@
 package com.ps.ssbug_h5_api.service;
 
 import com.ps.ssbug_h5_api.controller.MessageWebSocket;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
