@@ -42,22 +42,26 @@ public class ArticleController {
     @ApiOperation("发布帖子 , 内容有html格式的帖子")
     @PostMapping("/addArticle")
     public MessageVO addArticle(@RequestBody ArticleDTO articleDTO) throws Exception {
+        log.info("接收到参数" + articleDTO);
         MessageVO<Object> mv = new MessageVO<>();
 
         String fileName = UUID.randomUUID() + ".html";
         FileOutputStream fos = new FileOutputStream(ARTICLE_URL_PRE + "/" + fileName);
-        fos.write(fileName.getBytes());
+        fos.write(articleDTO.getHtml().getBytes());
 
         FileInputStream fis = new FileInputStream(ARTICLE_URL_PRE + "/" + fileName);
+
         //上传到七牛云
-        String url = uploadArticleUtil.uploadArticle(fis, fileName);
+        String url = uploadArticleUtil.uploadArticle(fis,fileName);
+        //url设置到DTO
+        articleDTO.setStorageUrl(url);
         //存储到mongodb数据库
         boolean bool = articleManageService.addArticle(articleDTO);
 
 
         if (!bool) {
             mv.setCode(0);
-            mv.setMsg("发布失败 , 请重试");
+            mv.setMsg("服务器失败 , 请重新发布");
         }
         return mv;
     }

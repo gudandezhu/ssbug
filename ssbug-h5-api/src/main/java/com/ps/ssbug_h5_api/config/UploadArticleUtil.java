@@ -61,7 +61,7 @@ public class UploadArticleUtil {
         DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
         log.info("上传成功,文章地址:"+cdnPrefix+"/"+fileName);
         log.info("秘钥hash : "+putRet.hash);
-        return cdnPrefix+"/"+fileName;
+        return fileName;
     }
 
 

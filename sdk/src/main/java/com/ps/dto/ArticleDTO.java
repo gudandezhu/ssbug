@@ -3,6 +3,7 @@ package com.ps.dto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -36,5 +37,9 @@ public class ArticleDTO implements Serializable {
     @ApiModelProperty(value = "外站文章链接")
     @Field("collect_url")
     private String collectUrl;       //外站文章链接
+
+    /*mongodb忽略字段*/
+    @Transient
+    private String html;
 
 }
