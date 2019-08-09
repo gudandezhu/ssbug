@@ -7,8 +7,8 @@ public class DOSutils {
 
     public static void main(String[] args) throws InterruptedException {
         //启动开启 zookeeper  和  kafka
-        DOSutils.startZookeeper("E:\\soft\\zookeeper-3.4.14");
-//       DOSutils.startKafka("E:\\soft\\kafka_2.12-2.3.0");
+//        DOSutils.startZookeeper("E:\\soft\\zookeeper-3.4.14");
+       DOSutils.startKafka("E:\\soft\\kafka_2.12-2.3.0");
     }
 
 
