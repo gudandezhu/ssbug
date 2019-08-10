@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
+import java.util.List;
+
 @Service
 public class SearchServiceImpl implements SearchService {
+
 
 
     @Value("${qiniu.cdn.article.prefix}")
@@ -26,5 +29,13 @@ public class SearchServiceImpl implements SearchService {
         dto.setStorageUrl(CDN_ARTICLE_PREFIX+"/"+dto.getStorageUrl());
 
         return dto;
+    }
+
+    //by关键字和参数 搜索服务
+    @Override
+    public List<ArticleDTO> findByKeyWord(String keyWord, String[] params) {
+
+
+        return null;
     }
 }

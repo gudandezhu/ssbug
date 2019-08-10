@@ -2,15 +2,16 @@ package com.ps.ssbug_h5_api.controller;
 
 import com.ps.dto.ArticleDTO;
 import com.ps.search.service.SearchService;
+import com.ps.ssbug_h5_api.vo.SearchVO;
 import com.ps.vo.MessageVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Api(tags = "搜索 api")
 @Slf4j
@@ -36,13 +37,22 @@ public class SearchController {
         return mv;
     }
 
+    @ApiOperation("排行榜 api")
+    @GetMapping("/findRankingList/{num}/{}")
+    public void findRankingList(@PathVariable int num){
+
+    }
 
     @ApiOperation("关键字模糊搜索")
-    @RequestMapping("/findByKeyWord")
-    public MessageVO findByKeyWord(){
+    @PostMapping("/findByKeyWord")
+    public MessageVO findByKeyWord(@RequestBody SearchVO searchVO){
         MessageVO<Object> mv = new MessageVO<>();
-
-
+        if(StringUtils.isEmpty(searchVO.getKeyWord())){
+            mv.setMsg("请输入内容搜索");
+            return mv;
+        }
+        List<ArticleDTO> list = service.findByKeyWord(searchVO.getKeyWord(), searchVO.getParams());
+        mv.setData(list);
         return mv;
     }
 }

@@ -39,7 +39,8 @@ public class ArticleDTO implements Serializable {
     private String collectUrl;       //外站文章链接
 
     /*mongodb忽略字段*/
-    @Transient
+//    @Transient
+    @ApiModelProperty(value = "文章内容")
     private String html;
 
 }
