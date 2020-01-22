@@ -6,28 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="sdk" />
         <module name="ssbug-admin-api" />
-        <module name="ssbug-h5-api" />
         <module name="ssbug-invitation-manager" />
-        <module name="ssbug-search" />
         <module name="usercenter" />
+        <module name="sdk" />
+        <module name="ssbug-search" />
+        <module name="ssbug-h5-api" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="sdk" target="1.8" />
-      <module name="ssbug" target="1.8" />
-      <module name="ssbug-admin-api" target="1.8" />
-      <module name="ssbug-h5-api" target="1.8" />
-      <module name="ssbug-invitation-manager" target="1.8" />
-      <module name="ssbug-search" target="1.8" />
-      <module name="usercenter" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="sdk" options="-parameters" />
-      <module name="ssbug" options="-parameters" />
       <module name="ssbug-admin-api" options="-parameters" />
       <module name="ssbug-h5-api" options="-parameters" />
       <module name="ssbug-invitation-manager" options="-parameters" />
